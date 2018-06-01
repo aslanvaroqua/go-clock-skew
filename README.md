@@ -1,6 +1,10 @@
 # go-clock-skew
 ## Description
-This project is collect tcp timestamp by passive method and prepare for estimate [clock-skew](https://github.com/xiaoxuanzi/clock-skew).
+
+This project is collecting tcp timestamps using a passive method and preparing for estimation of [clock-skew](https://github.com/aslanvaroqua/go-clock-skew).
+
+clock-skew can tell us a lot about a network topology and is useful for understanding what type of systems are utilizing your network. 
+
 ## Usage
 <pre><code>
 Usage of ./go-clock-skew:<br>
