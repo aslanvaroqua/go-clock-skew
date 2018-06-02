@@ -7,7 +7,6 @@ import (
 	"github.com/google/gopacket/pcap"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
-	"github.com/gavv/monotime"
 )
 
 func CapturePacket(){
@@ -56,10 +55,10 @@ func CapturePacket(){
 			srcTS := binary.BigEndian.Uint32(opt.OptionData[:4])
 
 			//elapsed := monotime.Since(startClock) / 1000000000
-			clock := monotime.Now()
+			//clock := monotime.Now()
 			cs := ClockSkew{
-				//Clock : time.Now().UnixNano(),
-				Clock : int64(clock),
+				Clock : time.Now().UnixNano(),
+				//Clock : int64(clock),
 				Taddr : taddr,
 				SrcTS : int(srcTS),
 			}
