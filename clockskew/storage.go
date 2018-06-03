@@ -1,19 +1,30 @@
 package clockskew
 
 import (
-	//"log"
 	"fmt"
+	"gopkg.in/mgo.v2"
+	"log"
 )
 
-func Storage(){
 
+
+func Storage(){
+	session, err := mgo.Dial("localhost")
+	if err != nil {
+		panic(err)
+	}
+	defer session.Close()
 	defer StorageFile.Close()
 	defer close(ClockSkewChannel)
 
 	for{
 		cs := <- ClockSkewChannel
-
-		item := fmt.Sprintf("%d %s %d\n",cs.Clock, cs.Taddr, cs.SrcTS)
-		StorageFile.WriteString(item)
+		c := session.DB("clock").C("skews")
+		err = c.Insert(cs)
+		if err != nil {
+			log.Fatal(err)
+		}
+		item := fmt.Sprintf("%d %s %d %d\n",cs.Clock, cs.Taddr, cs.SrcTS, cs.Skew)
+		StorageFile.WriteString(item) 
 	}
 }

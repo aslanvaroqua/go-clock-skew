@@ -1,15 +1,17 @@
 package clockskew
 
 import (
-	"time"
-	"fmt"
 	"encoding/binary"
-	"github.com/google/gopacket/pcap"
+	"fmt"
 	"github.com/google/gopacket"
 	"github.com/google/gopacket/layers"
+	"github.com/google/gopacket/pcap"
+	"time"
+	"github.com/gavv/monotime"
+	"math"
 )
 
-func CapturePacket(){
+func CapturePacket() {
 
 	device := DeviceName
 
@@ -17,7 +19,7 @@ func CapturePacket(){
 		device,
 		int32(65535),
 		false,
-		-1 * time.Second,
+		-1*time.Second,
 	)
 
 	defer handle.Close()
@@ -32,7 +34,7 @@ func CapturePacket(){
 	for packet := range packetSource.Packets() {
 
 		ipLayer := packet.Layer(layers.LayerTypeIPv4)
-		if ipLayer == nil{
+		if ipLayer == nil {
 			continue
 		}
 		ip, _ := ipLayer.(*layers.IPv4)
@@ -45,7 +47,7 @@ func CapturePacket(){
 
 		tcp, _ := tcpLayer.(*layers.TCP)
 		srcPort := tcp.SrcPort
-		taddr := srcIP + ":" +  fmt.Sprintf("%d",srcPort)
+		taddr := srcIP + ":" + fmt.Sprintf("%d", srcPort)
 
 		for _, opt := range tcp.Options {
 			if opt.OptionType.String() != "Timestamps" {
@@ -54,17 +56,15 @@ func CapturePacket(){
 
 			srcTS := binary.BigEndian.Uint32(opt.OptionData[:4])
 
-			//elapsed := monotime.Since(startClock) / 1000000000
-			//clock := monotime.Now()
 			cs := ClockSkew{
-				Clock : time.Now().UnixNano(),
-				//Clock : int64(clock),
-				Taddr : taddr,
-				SrcTS : int(srcTS),
-			}
+				Clock : int64(monotime.Now()),
+				Taddr: taddr,
+				SrcTS: int64(srcTS),
+				Skew: float64(int64(monotime.Now()) - int64(srcTS)),
+
+		}
 
 			ClockSkewChannel <- cs
 		}
 	}
 }
-

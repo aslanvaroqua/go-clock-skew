@@ -5,7 +5,7 @@ import (
 	"flag"
 	"os"
 	"github.com/google/gopacket/pcap"
-	"github.com/skewu/clockskew"
+	"github.com/aslanvaroqua/skewu/clockskew"
 )
 
 func handleDevice(device string) {
