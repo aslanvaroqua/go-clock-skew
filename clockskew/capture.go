@@ -59,7 +59,7 @@ func CapturePacket() {
 			cs := ClockSkew{
 				LocalTs   : localTs,
 				RemoteIp  : remoteIp,
-				RemoteTs: : remoteTs,
+				RemoteTs  : remoteTs,
 				Skew : skew
 		    }
 
