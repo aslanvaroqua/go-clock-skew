@@ -6,7 +6,6 @@ import (
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
 	"time"
-	"math"
 )
 
 func CapturePacket() {
@@ -44,26 +43,24 @@ func CapturePacket() {
 		}
 
 		tcp, _ := tcpLayer.(*layers.TCP)
-		remoteIp := srcIP
+		hostIp := srcIP
 
 		for _, opt := range tcp.Options {
 			if opt.OptionType.String() != "Timestamps" {
 				continue
 			}
 
-			remoteTs := binary.BigEndian.Uint32(opt.OptionData[:4])
-            delta = 6000
-            localTs = time.Now().Unix()
-            skew = math.Abs(i.Now().Unix() - srcTs)
+			hostTs := binary.BigEndian.Uint32(opt.OptionData[:4])
+            localTs := uint32(time.Now().Unix())
 
-			cs := ClockSkew{
-				LocalTs   : localTs,
-				RemoteIp  : remoteIp,
-				RemoteTs: : remoteTs,
-				Skew : skew
+
+			cs := Clock{
+				HostIp  : hostIp,
+				LocalTs : localTs,
+				HostTs  : hostTs,
 		    }
 
-			ClockSkewChannel <- cs
+			ClockChannel <- cs
 		}
 	}
 }

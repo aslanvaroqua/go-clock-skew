@@ -5,6 +5,7 @@ import (
 	"flag"
 	"os"
 	"github.com/google/gopacket/pcap"
+	"github.com/aslanvaroqua/skewu/clockview"
 	"github.com/aslanvaroqua/skewu/clockskew"
 )
 
@@ -32,15 +33,6 @@ func handleBPFFilter(device, bpFilter, storageFile  string) {
 
 	clockskew.BpConfig   = bpFilter
 	clockskew.DeviceName = device
-
-	newfile, err := os.OpenFile(storageFile,
-	os.O_CREATE|os.O_APPEND|os.O_RDWR, 0644)
-	if err != nil {
-		log.Println("handleBPFFilter error: ", err)
-		os.Exit(0)
-	}
-
-	clockskew.StorageFile = newfile
 }
 
 func handleHelp(displayHelp bool) {
@@ -52,7 +44,7 @@ func handleHelp(displayHelp bool) {
 
 func init(){
 
-	clockskew.ClockSkewChannel = make(chan clockskew.ClockSkew, 1000)
+	clockskew.ClockChannel = make(chan clockskew.Clock, 1000)
 	device  := flag.String("e", "eth0", "device name")
 	help := flag.Bool("h", false, "help")
 
