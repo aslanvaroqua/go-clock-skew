@@ -53,13 +53,11 @@ func CapturePacket() {
 			hostTs := binary.BigEndian.Uint32(opt.OptionData[:4])
             localTs := uint32(time.Now().Unix())
 
-
 			cs := Clock{
-				HostIp  : hostIp,
-				LocalTs : localTs,
-				HostTs  : hostTs,
-		    }
-
+				HostIp:  hostIp,
+				LocalTs: localTs,
+				HostTs:  hostTs,
+			}
 			ClockChannel <- cs
 		}
 	}
