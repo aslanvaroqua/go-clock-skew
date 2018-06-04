@@ -1,9 +1,5 @@
 package clockskew
 
-import (
-	"os"
-)
-
 type ClockSkew struct {
 	LocalTs   int64  `json:localTs`
 	HostIp    string `json:hostIp`
@@ -14,5 +10,4 @@ type ClockSkew struct {
 var DeviceName   string
 var BpConfig     string
 var ClockSkewChannel chan ClockSkew
-var StorageFile *os.File
 
