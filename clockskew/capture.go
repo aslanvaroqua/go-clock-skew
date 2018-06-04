@@ -7,8 +7,6 @@ import (
 	"github.com/google/gopacket/layers"
 	"github.com/google/gopacket/pcap"
 	"time"
-	"github.com/gavv/monotime"
-	"math"
 )
 
 func CapturePacket() {
@@ -46,23 +44,24 @@ func CapturePacket() {
 		}
 
 		tcp, _ := tcpLayer.(*layers.TCP)
-		srcPort := tcp.SrcPort
-		taddr := srcIP + ":" + fmt.Sprintf("%d", srcPort)
+		remoteIp := srcIP
 
 		for _, opt := range tcp.Options {
 			if opt.OptionType.String() != "Timestamps" {
 				continue
 			}
 
-			srcTS := binary.BigEndian.Uint32(opt.OptionData[:4])
+			remoteTs := binary.BigEndian.Uint32(opt.OptionData[:4])
+            delta = 6000
+            localTs = time.Now().Unix()
+            skew = math.Abs(i.Now().Unix() - srcTs)
 
 			cs := ClockSkew{
-				Clock : int64(monotime.Now()),
-				Taddr: taddr,
-				SrcTS: int64(srcTS),
-				Skew: float64(int64(monotime.Now()) - int64(srcTS)),
-
-		}
+				LocalTs   : localTs,
+				RemoteIp  : remoteIp,
+				RemoteTs: : remoteTs,
+				Skew : skew
+		    }
 
 			ClockSkewChannel <- cs
 		}

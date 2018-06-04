@@ -5,16 +5,10 @@ import (
 )
 
 type ClockSkew struct {
-
-	Clock       int64    `json:clock`
-	Taddr       string   `json:taddr`
-	//SrcPort     int      `json:srcPort`
-	SrcTS       int64      `json:srcTimeStamp`
-	Skew        int64       `json:skew`
-	//DstIP       string   `json:dstIp`
-	//DstPort     int      `json:dstPort`
-	//DstTS       int      `json:dstTimeStamp`
-
+	LocalTs   int64  `json:localTs`
+	HostIp    string `json:hostIp`
+	HostTs    int64  `json:hostTs`
+	Skew      int64  `json:skew`
 }
 
 var DeviceName   string
