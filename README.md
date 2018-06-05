@@ -24,6 +24,7 @@ Usage of ./go-clock-skew:<br>
 </pre></code>
 
 where to go from here?
+```
 go get "github.com/aslanvaroqua/go-clock-view"
 go get "github.com/google/gopacket"
 go get "go get gopkg.in/mgo.v2"
@@ -34,3 +35,4 @@ ifconfig -> find appropriate network interface or use default (eth0)
 go build main.go
 mv main.go /usr/bin/clock-view
 clock-view -e eth0 {other options)
+```
