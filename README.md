@@ -1,9 +1,11 @@
-# go-clock-skew
+# go-clock-view
 ## Description
 
-This project is collecting tcp timestamps using a passive method and preparing for estimation of [clock-skew](https://github.com/aslanvaroqua/go-clock-skew).
+This project is collecting tcp timestamps using a passive method and preparing for estimation of the number of devices behind a firewalled network passively by listening to system uptimes. This can be useful in detecting tethering and to gain insight into the network topology behind a network address translator. 
 
-clock-skew can tell us a lot about a network topology and is useful for understanding what type of systems are utilizing your network. 
+(https://github.com/aslanvaroqua/go-clock-view).
+
+the offset of the uptimes per ip can tell us a lot about a network topology and is useful for understanding what type of systems are utilizing your network and also to prevent unauthorized tethering in the case of an isp lets say.  
 
 ## Usage
 <pre><code>
