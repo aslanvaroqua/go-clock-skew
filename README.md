@@ -5,7 +5,7 @@ This project collects tcp timestamps passivly and in real time compares each pac
 
 (https://github.com/aslanvaroqua/go-clock-view).
 
-the offset of the uptimes per ip can tell us a lot about a network topology and is useful for understanding what type of systems are utilizing your network and also to prevent unauthorized tethering in the case of an isp lets say.  
+the offset of the uptimes per ip can tell us a lot about a network topology and is useful for understanding what type of systems are utilizing a network and also to prevent unauthorized tethering/connection sharing in the telecommunications industry.
 
 ## Usage
 <pre><code>
