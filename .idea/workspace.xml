@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2fbabf43-9f2a-4e7e-86fa-afa536f1d8eb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/clockview/capture.go" beforeDir="false" afterPath="$PROJECT_DIR$/clockview/capture.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/clockview/storage.go" beforeDir="false" afterPath="$PROJECT_DIR$/clockview/storage.go" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -25,10 +25,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="capture.go" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.go" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/clockview/config.go">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="storage.go" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/clockview/storage.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="411">
+              <caret line="58" column="20" lean-forward="true" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="capture.go" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/clockview/capture.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="173">
+            <state relative-caret-position="-31">
               <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
             </state>
           </provider>
@@ -53,6 +67,7 @@
         <option value="$PROJECT_DIR$/clockskew/config.go" />
         <option value="$PROJECT_DIR$/main.go" />
         <option value="$PROJECT_DIR$/clockview/capture.go" />
+        <option value="$PROJECT_DIR$/clockview/storage.go" />
       </list>
     </option>
   </component>
@@ -272,6 +287,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/clockview/capture.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-31">
+          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/main.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
@@ -282,10 +304,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/clockview/capture.go">
+    <entry file="file://$PROJECT_DIR$/clockview/config.go">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/clockview/storage.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+        <state relative-caret-position="411">
+          <caret line="58" column="20" lean-forward="true" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="38" />
         </state>
       </provider>
     </entry>

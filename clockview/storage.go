@@ -56,7 +56,7 @@ func MongoStorage(){
 								" units")
 					err = c.Insert(cs)
 				} else {
-
+					err = c.Insert(cs)
 				}
 			}
 
@@ -66,3 +66,5 @@ func MongoStorage(){
 		}
 	}
 }
+
+
